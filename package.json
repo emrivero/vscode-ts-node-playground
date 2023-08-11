@@ -1,0 +1,51 @@
+{
+	"name": "ts-node-playground",
+	"displayName": "TS-Node Playground",
+	"description": "Convenient and fast way to play around with Typescript and Node",
+	"version": "0.1.0",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"icon": "images/ferrisHammer.png",
+	"categories": [
+		"Other"
+	],
+	"publisher": "emrivero",
+	"repository": {
+		"type": "github",
+		"url": "git@github.com:emrivero/vscode-ts-node-playground.git"
+	},
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "emrivero.newPlayground",
+				"title": "Create a new TS-Node Playground"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.56.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"random-word-slugs": "^0.0.2"
+	}
+}

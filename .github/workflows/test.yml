@@ -1,0 +1,37 @@
+on:
+  pull_request:
+    branches:
+      - main
+name: test
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: install
+        run: yarn install
+      - name: test
+        run: yarn run compile && xvfb-run -a yarn test
+        if: runner.os == 'Linux'
+      - name: test
+        run: yarn run compile && yarn test
+        if: runner.os != 'Linux'
+
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: install
+        run: yarn install
+      - name: lint
+        run: yarn run compile && yarn run lint
