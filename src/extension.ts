@@ -1,4 +1,5 @@
 import { mkdir } from 'fs/promises';
+import * as os from 'os';
 import { join } from 'path';
 import { generateSlug } from 'random-word-slugs';
 import * as vscode from 'vscode';
@@ -10,9 +11,10 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('ts-node-playground.newPlayground', async () => {
 		try {
 			const slug = generateSlug(3, { format: "kebab" });
+			const username = os.userInfo().username;
 			const tmp = join(playgroundDir(), slug);
 			await mkdir(tmp, { recursive: true });
-			const uri = vscode.Uri.file(join(tmp, "index.ts"));
+			const uri = vscode.Uri.file(join(tmp, username, "index.ts"));
 			await vscode.workspace.fs.writeFile(uri, Buffer.from(""));
 			const doc = await vscode.workspace.openTextDocument(uri);
 			await vscode.window.showTextDocument(doc);

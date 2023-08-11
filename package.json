@@ -6,7 +6,7 @@
 	"engines": {
 		"vscode": "^1.74.0"
 	},
-	"icon": "images/logo.png",
+	"icon": "images/icon.png",
 	"categories": [
 		"Other"
 	],
@@ -20,7 +20,7 @@
 		"commands": [
 			{
 				"command": "ts-node-playground.newPlayground",
-				"title": "Create a new TS-Node Playground"
+				"title": "Create a new ts-node"
 			}
 		]
 	},
