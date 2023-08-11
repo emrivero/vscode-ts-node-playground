@@ -7,7 +7,7 @@
 > 
 > [Extension  Repository](https://github.com/conradludgate/vscode-rust-playground)
 
-![TS-Node Playground](images/logo.png "Logo provided by Aurorans Solis")
+![TS-Node Playground](https://raw.githubusercontent.com/emrivero/vscode-ts-node-playground/master/images/logo.png)
 
 Extension to easily write and execute TypeScript and Node scripts without having to create a project from scratch or use websites.
 
