@@ -7,7 +7,7 @@ import { PlaygroundLinkProvider } from './playground-provider';
 import { PlaygroundTerminal } from './playground-terminal';
 
 export function activate(context: vscode.ExtensionContext) {
-	context.subscriptions.push(vscode.commands.registerCommand('emrivero.newPlayground', async () => {
+	context.subscriptions.push(vscode.commands.registerCommand('ts-node-playground.newPlayground', async () => {
 		try {
 			const slug = generateSlug(3, { format: "kebab" });
 			const tmp = join(playgroundDir(), slug);
