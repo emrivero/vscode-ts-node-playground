@@ -6,7 +6,7 @@
 	"engines": {
 		"vscode": "^1.56.0"
 	},
-	"icon": "images/ferrisHammer.png",
+	"icon": "images/logo.png",
 	"categories": [
 		"Other"
 	],
@@ -19,7 +19,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "emrivero.newPlayground",
+				"command": "ts-node-playground.newPlayground",
 				"title": "Create a new TS-Node Playground"
 			}
 		]
