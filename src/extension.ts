@@ -1,4 +1,4 @@
-import { mkdir } from 'fs/promises';
+import { mkdir, readdir } from 'fs/promises';
 import { join } from 'path';
 import { generateSlug } from 'random-word-slugs';
 import * as vscode from 'vscode';
@@ -25,6 +25,19 @@ export function activate(context: vscode.ExtensionContext) {
 				modal: true,
 			});
 		}
+	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand('ts-node-playground.runPlayground', async () => {
+		const rootDir = playgroundDir();
+		const files = await readdir(rootDir);
+		const options = files.map((file) => join(rootDir, file));
+		const option = await vscode.window.showQuickPick(options);
+		if (option === undefined) {
+			return;
+		}
+		const uri = vscode.Uri.file(join(option, "index.ts"));
+		const doc = await vscode.workspace.openTextDocument(uri);
+		await vscode.window.showTextDocument(doc);
 	}));
 
 	context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(async (event) => {

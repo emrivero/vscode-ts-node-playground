@@ -6,13 +6,16 @@ export class PlaygroundTerminal {
     private static terminals: Record<string, PlaygroundTerminal> = {};
 
     static show(cwd: string): PlaygroundTerminal {
+
         const terminal = PlaygroundTerminal.terminals[cwd] || new PlaygroundTerminal(cwd);
+        this.createStdout(cwd, terminal);
+        this.createError(cwd, terminal);
         terminal.stdout.show(true);
         return terminal;
     }
 
-    private readonly stdout: vscode.Terminal;
-    private readonly stderr: vscode.Terminal;
+    private stdout: vscode.Terminal;
+    private stderr: vscode.Terminal;
     private constructor(
         private readonly cwd: string,
     ) {
@@ -29,6 +32,28 @@ export class PlaygroundTerminal {
         });
 
         PlaygroundTerminal.terminals[cwd] = this;
+    }
+
+    static createStdout(cwd: string, terminal: PlaygroundTerminal) {
+        if (terminal.stdout.exitStatus !== undefined) {
+            const split = cwd.split("/");
+            const slug = split[split.length - 1];
+            terminal.stdout = vscode.window.createTerminal({
+                name: `TS-Node Playground (${slug}) - stdout`,
+                pty: new PlaygroundPty('OUTPUT', 'Welcome to the TS-Node Playground. Try saving the open file'),
+            });
+        }
+    }
+
+    static createError(cwd: string, terminal: PlaygroundTerminal) {
+        if (terminal.stderr.exitStatus !== undefined) {
+            const split = cwd.split("/");
+            const slug = split[split.length - 1];
+            terminal.stderr = vscode.window.createTerminal({
+                name: `TS-Node Playground (${slug}) - stderr`,
+                pty: new PlaygroundPty('ERROR'),
+            });
+        }
     }
 
     static onSave(cwd: string) {

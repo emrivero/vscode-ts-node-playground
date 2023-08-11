@@ -2,7 +2,7 @@
 	"name": "ts-node-playground",
 	"displayName": "TS-Node Playground",
 	"description": "Convenient and fast way to play around with Typescript and Node",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.74.0"
 	},
@@ -20,7 +20,11 @@
 		"commands": [
 			{
 				"command": "ts-node-playground.newPlayground",
-				"title": "Create a new ts-node"
+				"title": "TS-Node Playground: Create a new ts-node playground"
+			},
+			{
+				"command": "ts-node-playground.runPlayground",
+				"title": "TS-Node Playground: Run an existing ts-node playground"
 			}
 		]
 	},
