@@ -2,7 +2,7 @@
 	"name": "ts-node-playground",
 	"displayName": "TS-Node Playground",
 	"description": "Convenient and fast way to play around with Typescript and Node",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.74.0"
 	},

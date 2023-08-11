@@ -1,8 +1,9 @@
-import { tmpdir } from 'os';
+import { tmpdir, userInfo } from 'os';
 import { join, relative } from 'path';
 
 export function playgroundDir(): string {
-	return join(tmpdir(), "vscode-ts-node-playground");
+	const folderName = "vscode-ts-node-playground";
+	return join(tmpdir(), userInfo().username, "vscode-ts-node-playground");
 }
 
 export function isPlayts(fsPath?: string): string | null {
@@ -14,4 +15,8 @@ export function isPlayts(fsPath?: string): string | null {
 		return join(fsPath, "..");
 	}
 	return null;
+}
+
+function existPlaygroundFolder() {
+
 }
