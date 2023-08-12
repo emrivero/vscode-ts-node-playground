@@ -17,7 +17,7 @@ Press CTRL+SHIFT+P and type `TS-Node Playground` to choose between the options:
 - `TS-Node Playground: Run existing Playground`: Runs the selected file from list.
 
 ## Example
-
+![Example](https://raw.githubusercontent.com/emrivero/vscode-ts-node-playground/master/images/example.gif)
 ## Features
 
 - [X] Create new TS-Node Playground
